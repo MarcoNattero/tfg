@@ -67,11 +67,6 @@ function playVideo(){
 }
 
 function changeVideo(){
-	/*var yt = document.getElementById("yt");
-	yt.parentNode.removeChild(yt);
-	yt = document.createElement('div');
-	yt.setAttribute("id", "yt");
-	document.getElementById("rightDiv").appendChild(yt);*/
 	document.getElementById("yt").style.display = 'none';
 	document.getElementById("hideShowControl").style.display = 'block';
 	player.stopVideo();
@@ -81,8 +76,6 @@ function appearYTVideo(){
 	idVid = document.getElementById("idVideo").value;	
 	document.getElementById("hideShowControl").style.display='none';
 	document.getElementById("yt").style.display = 'block';
-	//player.loadVideoById(idVid, 0, 'large');
-	//player.cueVideoById(idVid, 0, "large");
 }
 
 /*
@@ -103,21 +96,8 @@ function loadYTVideo(){
 }
 
 function ytModeRender(){
-
-	//var rightDiv = document.getElementById("rightDiv");
-	//var centerDiv = document.getElementById("centerDiv");
-	//var leftDi	= document.getElementById("leftDiv");
 	document.getElementById("idInput").setAttribute("style", "display:none;");
-	document.getElementById("yt").setAttribute("style", "display:block; margin-top:0px;");//style.display = 'block';
-	//centerDiv.appendChild(document.getElementById("yt"));
-	//document.getElementById("chatArea").setAttribute('rows', 30);
-	//leftDiv.appendChild(document.getElementById("videoDestacado"));
-	//document.getElementById("paintArea").setAttribute('height', '200px');
-	//document.getElementById("canvasDiv").style.display = 'none';
-	//document.getElementById("paintArea").style.display = 'none';
-	//document.getElementById("videoDestacado").setAttribute('style', 'width:70%;');
-	//document.getElementById("myVideo").setAttribute('style', 'height:35%;');
-	//leftDiv.appendChild(document.getElementById("otrosVideos"));
+	document.getElementById("yt").setAttribute("style", "display:block; margin-top:0px;");
 
 }
 
