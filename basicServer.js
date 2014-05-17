@@ -18,7 +18,6 @@ var names = new Array();
 var nameCorrect;
 
 var userCounter = 0; //Sólo para getUserNameById
-//cacquita  de la buena
 
 app.use(express.bodyParser());
 
