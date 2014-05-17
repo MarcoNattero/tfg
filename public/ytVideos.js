@@ -1,0 +1,142 @@
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+
+function onYouTubeIframeAPIReady() {
+player = new YT.Player('player', {
+  height: '300',
+  width: '90%',
+  videoId: 'M7lc1UVf-VE',
+  playerVars: { 'controls': 0 },
+  events: {
+    'onReady': onPlayerReady,
+    'onStateChange': onPlayerStateChange
+  }
+});
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+	//event.target.playVideo();
+	player.cueVideoById(idVid, 0, "large");
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+
+function onPlayerStateChange(event) {
+	if (event.data == YT.PlayerState.PLAYING && !done) {
+	  //setTimeout(stopVideo, 6000);
+	  done = true;
+	}
+}
+
+function stopVideo() {
+	player.stopVideo();
+	socket.emit('yt_stop');
+	document.getElementById("btnPlay").value="play";
+	document.getElementById("btnPlay").innerHTML = "<i class=\"icon-play\"></i> Play";
+}
+
+function pauseVideo(){
+	player.pauseVideo();
+	socket.emit('yt_pause');
+}
+
+function playVideo(){
+	var videoState = document.getElementById("btnPlay").value;
+	if(videoState == "play"){
+		player.playVideo();
+		socket.emit('yt_play');
+		document.getElementById("btnPlay").value="pause";
+		document.getElementById("btnPlay").innerHTML = "<i class=\"icon-pause\"></i> Pause";
+	}else{
+		player.pauseVideo();
+		socket.emit('yt_pause');
+		document.getElementById("btnPlay").value="play";
+		document.getElementById("btnPlay").innerHTML = "<i class=\"icon-play\"></i> Play";
+	}
+}
+
+function changeVideo(){
+	/*var yt = document.getElementById("yt");
+	yt.parentNode.removeChild(yt);
+	yt = document.createElement('div');
+	yt.setAttribute("id", "yt");
+	document.getElementById("rightDiv").appendChild(yt);*/
+	document.getElementById("yt").style.display = 'none';
+	document.getElementById("hideShowControl").style.display = 'block';
+	player.stopVideo();
+}
+
+function appearYTVideo(){
+	idVid = document.getElementById("idVideo").value;	
+	document.getElementById("hideShowControl").style.display='none';
+	document.getElementById("yt").style.display = 'block';
+	//player.loadVideoById(idVid, 0, 'large');
+	//player.cueVideoById(idVid, 0, "large");
+}
+
+/*
+ * Cambia los modos
+ * Carga el vídeo
+ */
+
+function loadYTVideo(){
+	//idVid = prompt("Pega aquí la URL del vídeo (YouTube)");
+	idVid = document.getElementById("idVideoYT").value;
+	if(idVid == "" || idVid == null){
+		$("#idYouTubeAlert").show();
+		return;
+	}
+	ytModeRender();
+	socket.emit('youtubeMode', {id:idVid});
+	ytVideoLoader();
+}
+
+function ytModeRender(){
+
+	//var rightDiv = document.getElementById("rightDiv");
+	//var centerDiv = document.getElementById("centerDiv");
+	//var leftDi	= document.getElementById("leftDiv");
+	document.getElementById("idInput").setAttribute("style", "display:none;");
+	document.getElementById("yt").setAttribute("style", "display:block; margin-top:0px;");//style.display = 'block';
+	//centerDiv.appendChild(document.getElementById("yt"));
+	//document.getElementById("chatArea").setAttribute('rows', 30);
+	//leftDiv.appendChild(document.getElementById("videoDestacado"));
+	//document.getElementById("paintArea").setAttribute('height', '200px');
+	//document.getElementById("canvasDiv").style.display = 'none';
+	//document.getElementById("paintArea").style.display = 'none';
+	//document.getElementById("videoDestacado").setAttribute('style', 'width:70%;');
+	//document.getElementById("myVideo").setAttribute('style', 'height:35%;');
+	//leftDiv.appendChild(document.getElementById("otrosVideos"));
+
+}
+
+function ytVideoLoader(){
+	player.loadVideoById(idVid, 0, 'large');
+}
+
+function showYTdiv(){
+	document.getElementById("activeBlackboard").setAttribute("class", "");
+	document.getElementById("activePrezi").setAttribute("class", "");
+	document.getElementById("activeYouTube").setAttribute("class", "active");
+	document.getElementById("tab1").setAttribute("class", "tab-pane");
+	document.getElementById("tab3").setAttribute("class", "tab-pane");
+	document.getElementById("tab2").setAttribute("class", "tab-pane active");
+}
+
+socket.on('youtubeMode', function(data){
+	idVid = data.id;
+	showYTdiv();
+	ytModeRender();
+	ytVideoLoader();
+});
