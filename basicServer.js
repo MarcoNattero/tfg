@@ -265,6 +265,12 @@ io.sockets.on('connection', function(socket){
 
     socket.on("pideTurno", function(data){
         socket.broadcast.emit("pideTurno", {name:data.name});
+        socket.emit("pideTurno", {name:data.name});
+    });
+
+    socket.on("quitaTurno", function(data){
+        socket.broadcast.emit("quitaTurno", {name:data.name});
+        socket.emit("quitaTurno", {name:data.name});
     });
 });
 

@@ -1,4 +1,5 @@
 var moderatorPrincipal = "[name]";
+var listaTurnoPedido = new Array();
 
 function loadDebate(){
 	/*var loadDebate = confirm("¿Seguro que quieres iniciar un debate?")
@@ -22,7 +23,7 @@ function loadDebateView(){
 }
 
 function sendDebateCall(){
-	document.getElementById("moderatorName").innerHTML="Moderator: <bold>" + moderatorPrincipal + "</bold>";
+	document.getElementById("moderatorName").innerHTML="Moderator: <strong>" + moderatorPrincipal.toUpperCase() + "</strong>";
 	var startTime = document.getElementById("durationDebate").value;
 	socket.emit("debateNow", {moderator: moderatorPrincipal, startTime: startTime});
 }
@@ -67,6 +68,7 @@ function timer()
      //counter ended, do something here
      document.getElementById("timer").setAttribute("style", "font-size:40px; color:black;");
      document.getElementById("timer").innerHTML="00 ";
+     limpiaListaTurnoPedido();
      return;
   }
 
@@ -99,7 +101,7 @@ function changeToDebateMode(){
 	document.getElementById("chronoArea").style.display="block";
 	viewChrono();
 	
-	document.getElementById("moderatorName").innerHTML = "Moderator: <bold>" + moderatorPrincipal + "</bold>";
+	document.getElementById("moderatorName").innerHTML = "Moderator: <strong>" + moderatorPrincipal.toUpperCase() + "</strong>";
 }
 
 function sendStartTimers(){
@@ -163,6 +165,29 @@ function pideTurno(){
 
 socket.on("pideTurno", function(data){
 	var pideTurno = data.name;
+	listaTurnoPedido.push(data.name);
 	//alert("" + pideTurno + " está pidiendo turno");
 	document.getElementById(""+pideTurno).setAttribute("style", "color:red;");
+	document.getElementById("btnQuitaTurno").disabled=false;
+});
+
+function limpiaListaTurnoPedido(){
+	var i;
+	for(i = 0; i < listaTurnoPedido.length-1; i++){
+		document.getElementById(""+lista[i]).setAttribute("style", "color:black;");
+	}
+	listaTurnoPedido = new Array();
+}
+
+function quitaTurno(){
+	socket.emit("quitaTurno", {name:nombre});
+}
+
+socket.on("quitaTurno", function(data){
+	var name = data.name;
+	var index = listaTurnoPedido.indexOf(name);
+	if(index > -1)
+		listaTurnoPedido.splice(index, 1);
+	document.getElementById(""+name).setAttribute("style", "color:black;")
+	document.getElementById("btnQuitaTurno").disabled=true;
 })
