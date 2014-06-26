@@ -5,7 +5,7 @@ var rolGeneral = "otro"; //Puede ser "principal", "secundario", "otro"
 var lockState = "open"; //Puede ser "open", "closed" o "closedByMe"
 var streamPrincipal;
 var principalNow = nombre;
-
+var lista = new Array();
 
 function enviaChat(){
 	var txt = document.getElementById("txtChat").value;
@@ -135,12 +135,12 @@ socket.on('updateListaNombres', function(data){
 });
 
 function updateListaNombres(listadenombres){
-	var lista = new Array();
+	
 	lista = listadenombres.split("*");
 	var cmd ="";
 	var i;
 	for(i = 0; i < lista.length-1; i++){
-		cmd += "<li><i class=\"icon-user\"></i> " + lista[i] + "</li>";
+		cmd += "<li id=\"" + lista[i] + "\" ><i class=\"icon-user\"></i> " + lista[i] + "</li>";
 	}
 	document.getElementById("listaParticipantes").innerHTML = cmd;
 }

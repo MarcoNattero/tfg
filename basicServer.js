@@ -261,7 +261,11 @@ io.sockets.on('connection', function(socket){
 
     socket.on("stopTimers", function(){
         socket.broadcast.emit("stopTimers");
-    })
+    });
+
+    socket.on("pideTurno", function(data){
+        socket.broadcast.emit("pideTurno", {name:data.name});
+    });
 });
 
 

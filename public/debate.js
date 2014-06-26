@@ -14,6 +14,7 @@ function loadDebateView(){
 	document.getElementById("moduleArea").style.display="none";
 	document.getElementById("chronoArea").style.display="block";
 	document.getElementById("debateControlPanel").style.display="block";
+	document.getElementById("pideTurno").style.display="none";
 	moderatorPrincipal = nombre;
 	viewChrono();
 	sendDebateCall();
@@ -48,6 +49,7 @@ function resetTimer(){
 	stopTimer();
 	viewChrono();
 	sendResetTimers();
+	document.getElementById("timer").setAttribute("style", "color:black; font-size:40px;");
 }
 
 var count = document.getElementById("durationDebate").value;
@@ -55,14 +57,20 @@ var count = document.getElementById("durationDebate").value;
 function timer()
 {  
   count=count-1;
+  if(count < 10)
+  {
+  	document.getElementById("timer").setAttribute("style", "font-size:40px; color:red;");
+  }
   if (count <= 0)
   {
      clearInterval(counter);
      //counter ended, do something here
+     document.getElementById("timer").setAttribute("style", "font-size:40px; color:black;");
+     document.getElementById("timer").innerHTML="00 ";
      return;
   }
 
-  document.getElementById("timer").innerHTML = "<bold>" + count + "</bold>" + " secs";
+  document.getElementById("timer").innerHTML = "<bold>" + count + "</bold>" + " ";
 }
 
 function updateDebateDuration(){
@@ -72,7 +80,7 @@ function updateDebateDuration(){
 }
 
 function viewChrono(){
-	document.getElementById("timer").innerHTML = "<bold>" + count + "</bold>" + " secs";
+	document.getElementById("timer").innerHTML = "<bold>" + count + "</bold>" + " ";
 }
 
 socket.on('debateNow', function(data){
@@ -109,7 +117,7 @@ function sendResetTimers(){
 
 function sendUpdateTimers(){
 	var newTime = document.getElementById("durationDebate").value;
-	socket.emit("updateTimers", {newTime: newTime})
+	socket.emit("updateTimers", {newTime: newTime});
 }
 
 socket.on("startTimers", function(data){
@@ -133,6 +141,7 @@ socket.on("updateTimers", function(data){
 	count = data.newTime;
 	stopTimer();
 	viewChrono();
+	document.getElementById("timer").setAttribute("style","color:black; font-size:40px;");
 });
 
 socket.on("updateListaNombres", function(data){
@@ -147,3 +156,13 @@ socket.on("updateListaNombres", function(data){
 	}
 	document.getElementsByClassName("selectNamesList")[0].innerHTML = cmd;
 });
+
+function pideTurno(){
+	socket.emit("pideTurno", {name:nombre});
+}
+
+socket.on("pideTurno", function(data){
+	var pideTurno = data.name;
+	//alert("" + pideTurno + " está pidiendo turno");
+	document.getElementById(""+pideTurno).setAttribute("style", "color:red;");
+})

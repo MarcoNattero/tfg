@@ -105,25 +105,27 @@
         </div>
 
         <div class="chrono" id="chronoArea" style="margin-top:20px; display:none;">
-          <h3>Time</h3>
-          <h1 id="timer"></h1>
-          <div id="moderatorName"></div><br>
+          <span style="font-size:25px;">Time: </span>
+          <span id="timer" style="font-size:40px;"> </span><span style="font-size:25px;">secs</span><br><br>
+          <div id="moderatorName"></div>
             <div id="debateControlPanel" style="display:none;">
             <div class="input-append" id="debateDuration"><br><br>
               <input placeholder="Duration" class="span3" id="durationDebate" value="30" type="text">
               <button class="btn" type="button" onclick="javascript:updateDebateDuration();">Reset</button>
             </div><br>
             
-            <button id="btnStartTimer" onclick="javascript: startTimer();">Start Timer</button><br><br><br>
+            <button id="btnStartTimer" onclick="javascript: startTimer();">Start Timer</button><br><br>
             <div class="input-prepend span12">
               <span class="add-on">Next </span>
               <select class="selectNamesList" id="prependedInput">
-                <option>Mazo</option>
-                <option>Mazo 2</option>
+                
               </select>
             </div>
             <br>
             <!--<button id="btnResetTimer" onclick="javascript: resetTimer();">Reset Timer</button>-->
+          </div>
+          <div id="pideTurno"><br>
+            <button id="btnPideTurno" class="btn btn-large" onclick="javascript: pideTurno();">Turn!</button>
           </div>
         </div>
 
