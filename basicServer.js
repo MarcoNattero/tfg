@@ -246,6 +246,22 @@ io.sockets.on('connection', function(socket){
     socket.on('preziPrevStep', function(){
         socket.broadcast.emit('preziPrevStep');
     });
+
+    socket.on('debateNow', function(data){
+        socket.broadcast.emit("debateNow", {moderator: data.moderator, startTime: data.startTime});
+    });
+
+    socket.on("updateTimers", function(data){
+        socket.broadcast.emit("updateTimers", {newTime: data.newTime});
+    });
+
+    socket.on("startTimers", function(data){
+        socket.broadcast.emit("startTimers", {startTime: data.startTime});
+    });
+
+    socket.on("stopTimers", function(){
+        socket.broadcast.emit("stopTimers");
+    })
 });
 
 

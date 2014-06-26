@@ -13,6 +13,7 @@
     <script type="text/javascript" src="blackboard.js"></script>
     <script type="text/javascript" src="prezi.js"></script>
     <script type="text/javascript" src="prezi_player.js"></script>
+    
     <link href='http://fonts.googleapis.com/css?family=Englebert' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -41,8 +42,8 @@
           <a class="brand" href="#">MNspace</a>
           <ul class="nav">
             <li id="supMenuIndex" class="active"><a href="#"><i class="icon-home"></i> Home</a></li>
-            <li><a id="supMenuDebate" href="" onclick="javascript: loadDebate();"><i class="icon-user"></i> Debate</a></li>
-            <li><a id="supAbout" href="/about.html" target="_blank"><i class="icon-info-sign"></i> About</a></li>
+            <li id="supMenuDebate"><a onclick="javascript: loadDebateView();"><i class="icon-user"></i> Debate</a></li>
+            <li id="supAbout"><a href="/about.html" target="_blank"><i class="icon-info-sign"></i> About</a></li>
             <li>
               <button style="margin-left:30px;" type="button" class="btn btn-default btn-lg" id="principalRolBtn" onclick="javascript: emitPrincipalRol();"><i class="icon-hand-up"></i> Principal</button>
               <img class="" id="imgLock" width="17px;" height="17px" src="images/open.png" onclick="javascript: toggleLockPrincipalRol();">
@@ -75,6 +76,11 @@
         <strong><span id="toPrincipalName"></span></strong> quiere ser principal.
       </div>
 
+      <div class="alert alert-info" id="newModerator" style="display:none;">
+        <button data-hide="alert" type="button" class="close">&times;</button>
+        <strong><span id="moderatorNameAlert"></span></strong> es el moderador del debate.
+      </div>
+
       <div class="alert alert-error" id="cannotOpenLock" style="display:none;">
         <button data-hide="alert" type="button" class="close">&times;</button>
         Sólo puede abrir el cerrjo el usuario que lo ha cerrado.
@@ -98,7 +104,30 @@
           <div id="myVideo"></div>
         </div>
 
-        <div class="tabbable" style="margin-top:20px;"> <!-- Only required for left/right tabs -->
+        <div class="chrono" id="chronoArea" style="margin-top:20px; display:none;">
+          <h3>Time</h3>
+          <h1 id="timer"></h1>
+          <div id="moderatorName"></div><br>
+            <div id="debateControlPanel" style="display:none;">
+            <div class="input-append" id="debateDuration"><br><br>
+              <input placeholder="Duration" class="span3" id="durationDebate" value="30" type="text">
+              <button class="btn" type="button" onclick="javascript:updateDebateDuration();">Reset</button>
+            </div><br>
+            
+            <button id="btnStartTimer" onclick="javascript: startTimer();">Start Timer</button><br><br><br>
+            <div class="input-prepend span12">
+              <span class="add-on">Next </span>
+              <select class="selectNamesList" id="prependedInput">
+                <option>Mazo</option>
+                <option>Mazo 2</option>
+              </select>
+            </div>
+            <br>
+            <!--<button id="btnResetTimer" onclick="javascript: resetTimer();">Reset Timer</button>-->
+          </div>
+        </div>
+
+        <div class="tabbable" id="moduleArea" style="margin-top:20px;"> <!-- Only required for left/right tabs -->
           <ul class="nav nav-tabs">
             <li id="activeBlackboard" class="active"><a href="#tab1" data-toggle="tab" onclick="changeToBlackboardMode();">Blackboard</a></li>
             <li id="activeYouTube"><a href="#tab2" data-toggle="tab">YouTube</a></li>
@@ -212,7 +241,7 @@
         </div>
 
         <!-- Chat -->
-        <div class="" id="chatSite">
+        <div class="" id="chatSite" style="margin-top:20px;">
           <form style="text-align:center;" action="javascript:enviaChat();" id="chat" autocomplete="off">
             <textarea rows="15" cols="100" id="chatArea" disabled style="background-color:#fff; color:#08C;"></textarea><br>
 
@@ -233,6 +262,8 @@
     <script>
       initCanvas();
     </script>
+    <script type="text/javascript" src="debate.js"></script>
+    
 
   </body>
 </html>
