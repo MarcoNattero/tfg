@@ -9,7 +9,7 @@ nav{
 	border-color: #265893;
 	list-style: none;
 	z-index: 10;
-	font-family: 'Englebert', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 1.2em;
 }
 
@@ -23,7 +23,8 @@ nav a{
 #logo{
 	margin-top:15px;
 	font-size: 2.2em;
-	font-family: 'Bubbler One', sans-serif;
+	/*font-family: 'Bubbler One', sans-serif;*/
+	font-family: 'Roboto', sans-serif;
 }
 
 nav a:hover{
@@ -151,7 +152,7 @@ input#idVideo{
 }
 
 #listaUsuarios{
-	font-family: 'Bubbler One', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	color: #222;
 	background-color: #eee;
 	border: 1px #ccc solid;
@@ -159,11 +160,20 @@ input#idVideo{
 
 #listaParticipantes{
 	list-style: none;
-	font-family: 'Englebert', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	color: #444;
 	text-align: left;
 }
 
 body{
 	background-color: #eee;
+	font-family: 'Roboto', sans-serif;
+}
+
+#nombreUsuario{
+	font-family: 'Roboto', sans-serif;
+}
+
+#menuControls{
+	font-family: 'Roboto', sans-serif;
 }
