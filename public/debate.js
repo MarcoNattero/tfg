@@ -10,6 +10,7 @@ function loadDebate(){
 }
 
 function loadDebateView(){
+	document.getElementById("principalControls").style.display="none";
 	document.getElementById("supMenuIndex").setAttribute("class", "");
 	document.getElementById("supMenuDebate").setAttribute("class", "active");
 	document.getElementById("moduleArea").style.display="none";
@@ -99,6 +100,7 @@ function changeToDebateMode(){
 	document.getElementById("supMenuDebate").setAttribute("class", "active");
 	document.getElementById("moduleArea").style.display="none";
 	document.getElementById("chronoArea").style.display="block";
+	document.getElementById("principalControls").style.display="none";
 	viewChrono();
 	
 	document.getElementById("moderatorName").innerHTML = "Moderator: <strong>" + moderatorPrincipal.toUpperCase() + "</strong>";

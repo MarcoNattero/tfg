@@ -70,7 +70,7 @@ function toPrincipalRol(){
 function toggleLockPrincipalRol(){
 	if(lockState == "open"){
 		document.getElementById("imgLock").setAttribute("src", "images/closed.png");
-		toPrincipalRol();
+		//toPrincipalRol();
 		lockState = "closedByMe";
 		socket.emit('lockClosed');
 	}else if(lockState == "closedByMe"){

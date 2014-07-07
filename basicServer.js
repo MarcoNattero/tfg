@@ -289,6 +289,10 @@ io.sockets.on('connection', function(socket){
     socket.on("wantToBePrincipalDebate", function(data){
         socket.broadcast.emit("wantToBePrincipalDebate", {name: data.name});
     });
+
+    socket.on("loadClassView", function(){
+        socket.broadcast.emit("loadClassView");
+    })
 });
 
 

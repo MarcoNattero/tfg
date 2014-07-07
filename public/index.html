@@ -7,6 +7,7 @@
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="mnClient.js"></script>
     <script type="text/javascript" src="principalVideo.js"></script>
+    <script type="text/javascript" src="aula.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="swfobject.js"></script>
     <script type="text/javascript" src="drawCanvas.js"></script>
@@ -47,8 +48,8 @@
             <li id="supMenuDebate"><a onclick="javascript: loadDebateView();"><i class="icon-user"></i> Debate</a></li>
             <li id="supAbout"><a href="/about.html" target="_blank"><i class="icon-info-sign"></i> About</a></li>
             <li>
-              <button style="margin-left:30px;" type="button" class="btn btn-default btn-lg" id="principalRolBtn" onclick="javascript: cambiarAModoPrincipal();"><i class="icon-hand-up"></i> Principal</button>
-              <img class="" id="imgLock" width="17px;" height="17px" src="images/open.png" onclick="javascript: toggleLockPrincipalRol();">
+              <div id="principalControls"><button style="margin-left:30px;" type="button" class="btn btn-default btn-lg" id="principalRolBtn" onclick="javascript: cambiarAModoPrincipal();"><i class="icon-hand-up"></i> Principal</button>
+              <img class="" id="imgLock" width="17px;" height="17px" src="images/open.png" onclick="javascript: toggleLockPrincipalRol();"></div>
             </li>
             <li>
               <div class="" style="margin-left:80px; padding:10px;" id="nombreUsuario"></div>
