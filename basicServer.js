@@ -272,6 +272,23 @@ io.sockets.on('connection', function(socket){
         socket.broadcast.emit("quitaTurno", {name:data.name});
         socket.emit("quitaTurno", {name:data.name});
     });
+
+    socket.on("changePrincipalDebate", function(data){
+        socket.broadcast.emit("changePrincipalDebate", {name:data.name});
+
+    });
+
+    socket.on("wantToBePrincipal", function(data){
+        socket.broadcast.emit("wantToBePrincipal", {name: data.name});
+    });
+
+    socket.on("videoDebateChange", function(data){
+        socket.broadcast.emit("videoDebateChange", {name: data.name});
+    });
+
+    socket.on("wantToBePrincipalDebate", function(data){
+        socket.broadcast.emit("wantToBePrincipalDebate", {name: data.name});
+    });
 });
 
 

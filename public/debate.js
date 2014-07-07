@@ -190,4 +190,57 @@ socket.on("quitaTurno", function(data){
 		listaTurnoPedido.splice(index, 1);
 	document.getElementById(""+name).setAttribute("style", "color:black;")
 	document.getElementById("btnQuitaTurno").disabled=true;
+});
+
+socket.on("changePrincipalDebate", function(data){
+	if(data.name!=nombre)
+	{
+		setPrincipalVideoDebate(data.name);	
+	}
+	
 })
+
+
+function videoDebateChangeNow(){
+
+
+	var nextName = document.getElementsByClassName("selectNamesList")[0].value;
+	socket.emit("videoDebateChange", {name:nextName});
+	videoDebateChange(nextName);
+}
+
+socket.on("videoDebateChange", function(data){
+	videoDebateChange(data.name);
+});
+
+function videoDebateChange(newVideoDebate){
+	var divTemp = document.getElementById("myVideo");
+
+	if(newVideoDebate == nombre){
+		if(divTemp.hasChildNodes()){
+			var i = 0;
+			for(i;i < divTemp.children.length; i++){
+				divTemp.children[i].style.display="none";
+			}
+
+		localStream.show("myVideo");
+
+		}else{
+			localStream.show("myVideo");
+		}
+	}else{
+		if(divTemp.hasChildNodes()){
+			var i = 0;
+			for(i;i < divTemp.children.length; i++){
+				divTemp.children[i].style.display="none";
+			}
+
+		var streamNewPrincipal = room.getStreamsByAttribute('name', newVideoDebate);
+		streamNewPrincipal[0].show("myVideo");
+
+		}else{
+			var streamNewPrincipal = room.getStreamsByAttribute('name', newVideoDebate);
+			streamNewPrincipal[0].show("myVideo");
+		}
+	}
+}

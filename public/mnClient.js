@@ -170,3 +170,5 @@ function changeImgAcordion(){
 	else
 		a.setAttribute("class", "icon-chevron-down");
 }
+
+
