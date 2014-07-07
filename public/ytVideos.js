@@ -52,6 +52,10 @@ function pauseVideo(){
 }
 
 function playVideo(){
+	//comprobar que el vídeo se ha cargado en más de un 10% en todos los clientes
+	/*
+		player.getVideoLoadedFraction();
+	*/
 	var videoState = document.getElementById("btnPlay").value;
 	if(videoState == "play"){
 		player.playVideo();
