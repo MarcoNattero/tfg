@@ -65,7 +65,7 @@ window.onload = function () {
   socket.emit('getListaNombres');
 
   // Coloca el nombre de usuario en pantalla
-  document.getElementById("nombreUsuario").innerHTML = "Conectado como  <strong>" + nombre + "</strong>"; //"<li id=\"titleControl\"><span style=\"margin-left:80px;\">" + nombre + "</span></li>";
+  document.getElementById("nombreUsuario").innerHTML = "Connected as  <strong>" + nombre + "</strong>"; //"<li id=\"titleControl\"><span style=\"margin-left:80px;\">" + nombre + "</span></li>";
   /*** FIN CAPTURA USERNAME ***/
 
 

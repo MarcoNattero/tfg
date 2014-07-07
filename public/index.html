@@ -45,7 +45,7 @@
         <div id="menuControls" class="container">
           <a class="brand" href="#">MNspace</a>
           <ul class="nav">
-            <li id="supMenuIndex" class="active"><a onclick="javascript: loadClassView();"><i class="icon-home"></i> Aula</a></li>
+            <li id="supMenuIndex" class="active"><a onclick="javascript: loadClassView();"><i class="icon-home"></i> Class</a></li>
             <li id="supMenuDebate"><a onclick="javascript: loadDebateView();"><i class="icon-user"></i> Debate</a></li>
             <li id="supAbout"><a href="/about.html" target="_blank"><i class="icon-info-sign"></i> About</a></li>
             <li>
@@ -67,27 +67,27 @@
         
       <div class="alert alert-warning" id="disconnectedUser" style="display:none;">
         <button data-hide="alert" type="button" class="close">&times;</button>
-        <strong><span id="userDiscon"></span></strong> se ha desconectado.
+        <strong><span id="userDiscon"></span></strong> has just disconnected.
       </div>
 
       <div class="alert alert-info" id="connectedUser" style="display:none;">
         <button data-hide="alert" type="button" class="close">&times;</button>
-        <strong><span id="userCon"></span></strong> se ha conectado.
+        <strong><span id="userCon"></span></strong> has just connected.
       </div>
 
       <div class="alert alert-info" id="toPrincipal" style="display:none;">
         <button data-hide="alert" type="button" class="close">&times;</button>
-        <strong><span id="toPrincipalName"></span></strong> quiere ser principal.
+        <strong><span id="toPrincipalName"></span></strong> wants to be Principal.
       </div>
 
       <div class="alert alert-info" id="newModerator" style="display:none;">
         <button data-hide="alert" type="button" class="close">&times;</button>
-        <strong><span id="moderatorNameAlert"></span></strong> es el moderador del debate.
+        <strong><span id="moderatorNameAlert"></span></strong> is the moderator of the discussion
       </div>
 
       <div class="alert alert-error" id="cannotOpenLock" style="display:none;">
         <button data-hide="alert" type="button" class="close">&times;</button>
-        Sólo puede abrir el cerrjo el usuario que lo ha cerrado.
+        The lock can only be openned by the user that closed it before.
       </div>
 
       <script>
@@ -161,7 +161,7 @@
               </div>
 
                 <div class="input-append" id="idInput"><br><br>
-                  <input placeholder="ID del vídeo" class="span8" id="idVideoYT" type="text">
+                  <input placeholder="Video ID" class="span8" id="idVideoYT" type="text">
                   <button class="btn" type="button" onclick="javascript:loadYTVideo();">Go!</button>
                 </div>
               <div id="yt" style="display:none;">
@@ -212,7 +212,7 @@
           </div>-->
 
           <div id="listaUsuarios" class="acordion" style="text-align:center;">
-            <div class="acordion-heading"><h4 style="color: #08C;">Participantes  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"><i class="icon-chevron-up" id="imgAcordion" onclick="javascript:changeImgAcordion();"></i></a></h4></div>
+            <div class="acordion-heading"><h4 style="color: #08C;">Participants  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"><i class="icon-chevron-up" id="imgAcordion" onclick="javascript:changeImgAcordion();"></i></a></h4></div>
             <div id="collapseOne" class="accordion-body collapse in">
               <div class="accordion-inner">
                 <ul id="listaParticipantes">
