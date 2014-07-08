@@ -10,7 +10,8 @@ var lista = new Array();
 function enviaChat(){
 	var txt = document.getElementById("txtChat").value;
 	socket.emit('chat', { msg: txt, from: nombre });
-	document.getElementById("chatArea").value += "\nYou > " + txt;
+	//document.getElementById("chatArea").value += "\nYou > " + txt;
+	document.getElementById("chatArea").value = "\nYou > " + txt + document.getElementById("chatArea").value;
 	document.getElementById("txtChat").value = "";
 }
 
@@ -19,7 +20,8 @@ function enviaChat(){
 //Gestiona entrada de mensajes de chat
 socket.on('mens', function(data){
 	console.log("Mensaje recibido: " + data.mens);
-	document.getElementById("chatArea").value += "\n      " + data.from + " > " + data.mens;
+	//document.getElementById("chatArea").value += "\n      " + data.from + " > " + data.mens;
+	document.getElementById("chatArea").value = "\n      " + data.from + " > " + data.mens + document.getElementById("chatArea").value;
 });
 
 

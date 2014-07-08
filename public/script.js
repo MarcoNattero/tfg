@@ -10,7 +10,7 @@
  *
 */
 
-var socket = io.connect('http://172.20.10.8:3005');
+var socket = io.connect('http://localhost:3005');
 var serverUrl = "/";
 var localStream, room, recording;
 var idVideos = new Array(); //Guarda los IDs de cada vídeo de invitado con su respectivo nombre

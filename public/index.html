@@ -252,13 +252,14 @@
         <!-- Chat -->
         <div class="" id="chatSite" style="margin-top:20px;">
           <form style="text-align:center;" action="javascript:enviaChat();" id="chat" autocomplete="off">
-            <textarea rows="15" cols="100" id="chatArea" disabled style="background-color:#fff; color:#08C;"></textarea><br>
+            <div class="input-append" style="text-align:center;">
+              <input class="span8" id="txtChat" type="text">
+              <button class="btn" type="submit"><i class="icon-envelope"></i> Send</button>
+            </div><br>
+            <textarea class="span10" cols="100" id="chatArea" disabled style="background-color:#fff; color:#08C;"></textarea>
             <!--<div id="chatTextArea" class="span10 text-left" height="300px" display="inline"></div>-->
 
-            <div class="input-append" style="text-align:center;">
-              <input class="span10" id="txtChat" type="text">
-              <button class="btn" type="submit"><i class="icon-envelope"></i> Send</button>
-            </div>
+            
 
           </form>
         </div>

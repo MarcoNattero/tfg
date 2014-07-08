@@ -216,7 +216,7 @@ socket.on("videoDebateChange", function(data){
 });
 
 function videoDebateChange(newVideoDebate){
-	var divTemp = document.getElementById("myVideo");
+	/*var divTemp = document.getElementById("myVideo");
 
 	if(newVideoDebate == nombre){
 		if(divTemp.hasChildNodes()){
@@ -243,6 +243,14 @@ function videoDebateChange(newVideoDebate){
 		}else{
 			var streamNewPrincipal = room.getStreamsByAttribute('name', newVideoDebate);
 			streamNewPrincipal[0].show("myVideo");
-		}
+		}*/
+
+	var newName = newVideoDebate;
+	document.getElementById("myVideo").innerHTML="";
+	if(newName == nombre){
+		localStream.show("myVideo");
+	}else{
+		var newStream = room.getStreamsByAttribute("name", newName);
+		newStream[0].show("myVideo");
 	}
 }

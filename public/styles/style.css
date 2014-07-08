@@ -133,6 +133,12 @@ nav li:hover ul {
 	margin-top: 65px;
 }
 
+#chatArea{
+	resize:vertical;
+	max-height:300px; 
+	min-height:200px;
+}
+
 #shareArea{
 	margin:auto;
 	text-align: center;
