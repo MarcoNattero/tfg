@@ -43,7 +43,7 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div id="menuControls" class="container">
-          <a class="brand" href="#"><img src="/images/logoRTC.png" width="25px" height="25px"/> MNspace</a>
+          <a class="brand" href="#"><img src="/images/logoRTC.png" width="20px" height="20px"/> MNspace</a>
           <ul class="nav">
             <li id="supMenuIndex" class="active"><a onclick="javascript: loadClassView();"><i class="icon-home"></i> Class</a></li>
             <li id="supMenuDebate"><a onclick="javascript: loadDebateView();"><i class="icon-user"></i> Debate</a></li>
@@ -122,6 +122,7 @@
           <div id="moderatorName"></div>
             <div id="debateControlPanel" style="display:none;">
             <div class="input-append" id="debateDuration"><br><br>
+              <span class="add-on">Set timer</span> 
               <input placeholder="Duration" class="span3" id="durationDebate" value="30" type="text">
               <button class="btn" type="button" onclick="javascript:updateDebateDuration();">Reset</button>
             </div><br>
@@ -258,17 +259,13 @@
         </div>
 
         <!-- Chat -->
-        <div class="" id="chatSite" style="margin-top:20px;">
+        <div class="span12" id="chatSite" style="margin-top:0px;">
           <form style="text-align:center;" action="javascript:enviaChat();" id="chat" autocomplete="off">
             <div class="input-append" style="text-align:center;">
               <input class="span8" id="txtChat" type="text">
               <button class="btn" type="submit"><i class="icon-envelope"></i> Send</button>
             </div><br>
             <textarea class="span10" cols="100" id="chatArea" disabled style="background-color:#fff; color:#08C;"></textarea>
-            <!--<div id="chatTextArea" class="span10 text-left" height="300px" display="inline"></div>-->
-
-            
-
           </form>
         </div>
       </div>

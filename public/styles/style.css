@@ -135,7 +135,7 @@ nav li:hover ul {
 
 #chatArea{
 	resize:vertical;
-	max-height:350px; 
+	max-height:300px; 
 	min-height:200px;
 }
 
