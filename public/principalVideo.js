@@ -1,6 +1,6 @@
 //Gestión video principal
 
-function cambiarAModoPrincipal(){
+function cambiarAModoPrincipalTwo(){
 	socket.emit("wantToBePrincipal", {name:nombre});
 	var divTemp = document.getElementById("myVideo");
 	if(divTemp.hasChildNodes()){
@@ -16,7 +16,7 @@ function cambiarAModoPrincipal(){
 	
 }
 
-socket.on("wantToBePrincipal", function(data){
+socket.on("wantToBePrincipalTwo", function(data){
 	var divTemp = document.getElementById("myVideo");
 	if(divTemp.hasChildNodes()){
 		var i = 0;
@@ -34,3 +34,16 @@ socket.on("wantToBePrincipal", function(data){
 
 
 });
+
+function cambiarAModoPrincipal(){
+	document.getElementById("myVideo").innerHTML = "";
+	socket.emit("wantToBePrincipal", {name:nombre});
+	localStream.show("myVideo");
+}
+
+socket.on("wantToBePrincipal", function(data){
+	document.getElementById("myVideo").innerHTML = "";
+	var newName = data.name;
+	var newStream = room.getStreamsByAttribute("name", newName);
+	newStream[0].show("myVideo");
+})
