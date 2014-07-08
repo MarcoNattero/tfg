@@ -43,13 +43,13 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div id="menuControls" class="container">
-          <a class="brand" href="#">MNspace</a>
+          <a class="brand" href="#"><img src="/images/logoRTC.png" width="25px" height="25px"/> MNspace</a>
           <ul class="nav">
             <li id="supMenuIndex" class="active"><a onclick="javascript: loadClassView();"><i class="icon-home"></i> Class</a></li>
             <li id="supMenuDebate"><a onclick="javascript: loadDebateView();"><i class="icon-user"></i> Debate</a></li>
             <li id="supAbout"><a href="/about.html" target="_blank"><i class="icon-info-sign"></i> About</a></li>
             <li>
-              <div id="principalControls"><button style="margin-left:30px;" type="button" class="btn btn-default btn-lg" id="principalRolBtn" onclick="javascript: cambiarAModoPrincipal();"><i class="icon-hand-up"></i> Principal</button>
+              <div id="principalControls"><button style="margin-left:30px;" type="button" class="btn btn-info btn-lg" id="principalRolBtn" onclick="javascript: cambiarAModoPrincipal();"><i class="icon-hand-up"></i> Principal</button>
               <img class="" id="imgLock" width="17px;" height="17px" src="images/open.png" onclick="javascript: toggleLockPrincipalRol();"></div>
             </li>
             <li>
@@ -105,7 +105,15 @@
       <div class="span6">
         <!-- Mi vídeo -->
         <div id="videoDestacado">
-          <div id="myVideo"></div>
+          <div id="myVideo">
+            <!--<div class="well span6 offset3">Nobody has been placed on the preferred site. Be the first by clicking on <div class="well well-small"><i class="icon-hand-up"></i> Principal</div></div>-->
+            <div class="hero-unit">
+              <blockquote class="push-left"><p>Nobody has been placed on the principal site. Be the first by clicking on <button onclick="javascript: cambiarAModoPrincipal();" class="btn btn-info"><i class="icon-hand-up"></i> Principal</button></p><br>
+              <small>Then you can press the lock to block your video stream in the principal site. Unlock it for let the other participants share their video.</small>
+              </blockquote>
+              <br>
+            </div>
+          </div>
         </div>
 
         <div class="chrono" id="chronoArea" style="margin-top:20px; display:none;">

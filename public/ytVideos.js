@@ -72,7 +72,7 @@ function playVideo(){
 
 function changeVideo(){
 	document.getElementById("yt").style.display = 'none';
-	document.getElementById("hideShowControl").style.display = 'block';
+	document.getElementById("idInput").style.display = 'block';
 	player.stopVideo();
 }
 
