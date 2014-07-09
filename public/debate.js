@@ -247,6 +247,7 @@ function videoDebateChange(newVideoDebate){
 
 	var newName = newVideoDebate;
 	document.getElementById("myVideo").innerHTML="";
+	document.getElementById("principalName").innerHTML = "<i class=\"icon-user\"></i> " + newName;
 	if(newName == nombre){
 		localStream.show("myVideo");
 	}else{
