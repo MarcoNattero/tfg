@@ -239,12 +239,12 @@ io.sockets.on('connection', function(socket){
         socket.broadcast.emit('preziMode', {id: data.id});
     });
 
-    socket.on('preziNextStep', function(){
-        socket.broadcast.emit('preziNextStep');
+    socket.on('preziNextStep', function(data){
+        socket.broadcast.emit('preziNextStep', {step: data.step});
     });
 
-    socket.on('preziPrevStep', function(){
-        socket.broadcast.emit('preziPrevStep');
+    socket.on('preziPrevStep', function(data){
+        socket.broadcast.emit('preziPrevStep', {step: data.step});
     });
 
     socket.on('debateNow', function(data){

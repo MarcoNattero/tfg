@@ -49,21 +49,27 @@ function showPreziDiv(){
 }
 
 function nextStep(){
-	socket.emit('preziNextStep');
-	playerPrezi.flyToNextStep();
+	var nxtStep = playerPrezi.getCurrentStep() + 1;
+	socket.emit('preziNextStep', {step: nxtStep});
+	playerPrezi.flyToStep(nxtStep);
 }
 
 function prevStep(){
-	socket.emit('preziPrevStep');
-	playerPrezi.flyToPreviousStep();
+	var prvStep = playerPrezi.getCurrentStep() - 1;
+	if(prvStep >= 0){
+		socket.emit('preziPrevStep', {step:prvStep});
+		playerPrezi.flyToStep(prvStep);
+	}else{
+		$("idPreziAlertFirstStep").show();
+	}
 }
 
-socket.on('preziNextStep', function(){
-	playerPrezi.flyToNextStep();
+socket.on('preziNextStep', function(data){
+	playerPrezi.flyToStep(data.step);
 });
 
-socket.on('preziPrevStep', function(){
-	playerPrezi.flyToPreviousStep();
+socket.on('preziPrevStep', function(data){
+	playerPrezi.flyToStep(data.step);
 });
 
 socket.on('preziMode', function(data){

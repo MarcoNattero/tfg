@@ -9,8 +9,9 @@ function cambiarAModoPrincipal(){
 
 socket.on("wantToBePrincipal", function(data){
 	document.getElementById("myVideo").innerHTML = "";
-	document.getElementById("principalName").innerHTML = "<i class=\"icon-user\"></i> " + nombre;
+	
 	var newName = data.name;
 	var newStream = room.getStreamsByAttribute("name", newName);
+	document.getElementById("principalName").innerHTML = "<i class=\"icon-user\"></i> " + newName;
 	newStream[0].show("myVideo");
 })
